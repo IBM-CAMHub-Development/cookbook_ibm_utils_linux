@@ -1,0 +1,50 @@
+[
+    {
+        "attributes": {
+            "ibm": {},
+            "linux": {
+                "configure": {
+                    "yum_repositories": "false"
+                }
+            }
+        },
+        "depends_on": [
+            ""
+        ],
+        "description": "Setup the yum repositories on node",
+        "displayname": "linux_utils_no_repo",
+        "name": "linux_utils_no_repo",
+        "objectname": "linux_utils_no_repo",
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "ibm": {},
+            "linux": {
+                "configure": {
+                    "yum_repositories": "true"
+                },
+                "yum_repositories": {
+                    "repo01": {
+                        "baseurl": "",
+                        "description": "",
+                        "enabled": true,
+                        "gpgcheck": true,
+                        "gpgkey": "",
+                        "repositoryid": "",
+                        "sslcacert": "",
+                        "sslverify": true
+                    }
+                }
+            }
+        },
+        "depends_on": [
+            ""
+        ],
+        "description": "Setup the yum repositories on node",
+        "displayname": "linux_utils_with_repo",
+        "name": "linux_utils_with_repo",
+        "objectname": "linux_utils_with_repo",
+        "type": "chef_role"
+    }
+]

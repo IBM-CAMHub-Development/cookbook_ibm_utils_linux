@@ -1,0 +1,94 @@
+{
+    "linux": {
+        "configure": {
+            "yum_repositories": {
+                "default": "false",
+                "description": "Boolen Flag to configure YUM Repositories",
+                "displayname": "Configure YUM Repositories",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "recommended",
+                "selectable": "false",
+                "type": "string"
+            }
+        },
+        "yum_repositories": {
+            "repo01": {
+                "baseurl": {
+                    "default": "https://xx",
+                    "description": "URL For accessing YUM Repository",
+                    "displayname": "Base YUM URL",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "description": {
+                    "default": "Yum Repository 1",
+                    "description": "Description of the YUM respository",
+                    "displayname": "Description",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "enabled": {
+                    "default": "true",
+                    "description": "Enable True/False Flag",
+                    "displayname": "Enable YUM Repo",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "selectable": "false",
+                    "type": "boolean"
+                },
+                "gpgcheck": {
+                    "default": "true",
+                    "description": "GPGCheck True/False Flag",
+                    "displayname": "Enable GPGCheck Repo",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "selectable": "false",
+                    "type": "boolean"
+                },
+                "gpgkey": {
+                    "default": "",
+                    "description": "Location of GPG Key",
+                    "displayname": "GPG Key for Repository",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "repositoryid": {
+                    "default": "CAM Repository",
+                    "description": "Repository ID Name",
+                    "displayname": "Respository ID",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "sslcacert": {
+                    "description": "Location of  sslcacert ",
+                    "displayname": "Location of  sslcacert "
+                },
+                "sslverify": {
+                    "default": "true",
+                    "description": "sslverify True/False Flag",
+                    "displayname": "Enable sslverify Repo",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "selectable": "false",
+                    "type": "boolean"
+                }
+            }
+        }
+    }
+}
