@@ -1,13 +1,18 @@
 {
     "linux": {
-        "aws_setup.rb": {
-            "description": [
-                "AWS Setup Cookbook, enable the extra repositories needed to install IBM Products.\r"
-            ]
-        },
         "cleanup.rb": {
             "description": [
-                "Left Empty on purpose, not used in cookbook.\r"
+                "Left Empty on purpose, not used in cookbook."
+            ]
+        },
+        "create_fs.rb": {
+            "description": [
+                "Create 1..n disks and mount based on the ibm_cloud_fs resource"
+            ]
+        },
+        "create_lvm.rb": {
+            "description": [
+                "Create a series of physical volumes, volume groups and logical volumes"
             ]
         },
         "default.rb": {
@@ -20,12 +25,6 @@
                 "Left Empty on purpose, not used in cookbook."
             ]
         },
-        "hostsfile.rb": {
-            "description": [
-                "Add all hosts from the all hosts in a stack to the hosts file.",
-                "Will not add the current node to the hosts file."
-            ]
-        },
         "install.rb": {
             "description": [
                 "Left Empty on purpose, not used in cookbook."
@@ -33,12 +32,12 @@
         },
         "prereq.rb": {
             "description": [
-                "Install prequisite packages on Linux distro\r"
+                "Install prequisite packages on Linux distro"
             ]
         },
         "test_kitchen_fix.rb": {
             "description": [
-                "Install net-tools for inspec testing of port numbers.\r"
+                "Install net-tools for inspec testing of port numbers."
             ]
         },
         "yumrepo.rb": {

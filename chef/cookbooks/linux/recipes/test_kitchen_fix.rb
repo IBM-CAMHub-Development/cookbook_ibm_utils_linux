@@ -11,3 +11,10 @@
 package 'net-tools' do
   action :install
 end
+
+# Vault gem install for inspec
+chef_gem 'chef-vault' do
+  version "2.9.0"
+  action :install
+  compile_time true
+end

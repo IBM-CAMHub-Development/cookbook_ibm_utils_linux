@@ -73,9 +73,94 @@ Attributes
     <td>Default</td>
   </tr>
   <tr>
-    <td><code>node['linux']['configure']['yum_repositories']</code></td>
-    <td>Boolen Flag to configure YUM Repositories</td>
-    <td><code>false</code></td>
+    <td><code>node['linux']['filesystems']['filesystem($INDEX)']['device']</code></td>
+    <td>Device to mount to, leave blank if unknown, the system will search for it.</td>
+    <td><code>/dev/xvdc</code></td>
+  </tr>
+  <tr>
+    <td><code>node['linux']['filesystems']['filesystem($INDEX)']['force']</code></td>
+    <td>Force the mount true or false</td>
+    <td><code>true</code></td>
+  </tr>
+  <tr>
+    <td><code>node['linux']['filesystems']['filesystem($INDEX)']['fstype']</code></td>
+    <td>File System Type</td>
+    <td><code>ext4</code></td>
+  </tr>
+  <tr>
+    <td><code>node['linux']['filesystems']['filesystem($INDEX)']['group']</code></td>
+    <td>Group owner of the mount point</td>
+    <td><code>root</code></td>
+  </tr>
+  <tr>
+    <td><code>node['linux']['filesystems']['filesystem($INDEX)']['label']</code></td>
+    <td>Label of the file system</td>
+    <td><code>filesystem1</code></td>
+  </tr>
+  <tr>
+    <td><code>node['linux']['filesystems']['filesystem($INDEX)']['mountpoint']</code></td>
+    <td>Directory to mount to, directory will be created</td>
+    <td><code>/var/filesystem1</code></td>
+  </tr>
+  <tr>
+    <td><code>node['linux']['filesystems']['filesystem($INDEX)']['options']</code></td>
+    <td>Advanced options for mounting the disk</td>
+    <td><code>defaults</code></td>
+  </tr>
+  <tr>
+    <td><code>node['linux']['filesystems']['filesystem($INDEX)']['perms']</code></td>
+    <td>Permissions for the mount point.</td>
+    <td><code>755</code></td>
+  </tr>
+  <tr>
+    <td><code>node['linux']['filesystems']['filesystem($INDEX)']['size']</code></td>
+    <td>Size in GB of the disk</td>
+    <td><code>true</code></td>
+  </tr>
+  <tr>
+    <td><code>node['linux']['filesystems']['filesystem($INDEX)']['user']</code></td>
+    <td>Owner of the mount point.</td>
+    <td><code>root</code></td>
+  </tr>
+  <tr>
+    <td><code>node['linux']['physicalvolumes']['physicalvolume($INDEX)']['device']</code></td>
+    <td>Name of the physical device, eg, /dev/xdba. Leave assign a free device based on size</td>
+    <td><code></code></td>
+  </tr>
+  <tr>
+    <td><code>node['linux']['physicalvolumes']['physicalvolume($INDEX)']['logicalvolumes']['logicalvolume($INDEX)']['filesystem']</code></td>
+    <td>The stsandard filesystem type.</td>
+    <td><code>ext4</code></td>
+  </tr>
+  <tr>
+    <td><code>node['linux']['physicalvolumes']['physicalvolume($INDEX)']['logicalvolumes']['logicalvolume($INDEX)']['lv_name']</code></td>
+    <td>Name of the logical volume.</td>
+    <td><code>lv_name</code></td>
+  </tr>
+  <tr>
+    <td><code>node['linux']['physicalvolumes']['physicalvolume($INDEX)']['logicalvolumes']['logicalvolume($INDEX)']['lv_size']</code></td>
+    <td>Size of the filesystem, use standard lvm file size format</td>
+    <td><code>10g</code></td>
+  </tr>
+  <tr>
+    <td><code>node['linux']['physicalvolumes']['physicalvolume($INDEX)']['logicalvolumes']['logicalvolume($INDEX)']['mountpoint']</code></td>
+    <td>Mount Point of the file system attached to the Logical Volume</td>
+    <td><code>/var/filesystem1</code></td>
+  </tr>
+  <tr>
+    <td><code>node['linux']['physicalvolumes']['physicalvolume($INDEX)']['logicalvolumes']['logicalvolume($INDEX)']['options']</code></td>
+    <td>Name of the logical volume.</td>
+    <td><code>rw</code></td>
+  </tr>
+  <tr>
+    <td><code>node['linux']['physicalvolumes']['physicalvolume($INDEX)']['size']</code></td>
+    <td>Size if GB of the device.</td>
+    <td><code>10</code></td>
+  </tr>
+  <tr>
+    <td><code>node['linux']['physicalvolumes']['physicalvolume($INDEX)']['vg_name']</code></td>
+    <td>Name of the Volume Group to be assigned to the Physical Volume.</td>
+    <td><code>vgname</code></td>
   </tr>
   <tr>
     <td><code>node['linux']['yum_repositories']['repo01']['baseurl']</code></td>
@@ -122,16 +207,22 @@ Attributes
 Recipes
 -------
 
-### linux::aws_setup.rb
-
-
-AWS Setup Cookbook, enable the extra repositories needed to install IBM Products.
-
-
 ### linux::cleanup.rb
 
 
 Left Empty on purpose, not used in cookbook.
+
+
+### linux::create_fs.rb
+
+
+Create 1..n disks and mount based on the ibm_cloud_fs resource
+
+
+### linux::create_lvm.rb
+
+
+Create a series of physical volumes, volume groups and logical volumes
 
 
 ### linux::default.rb
@@ -144,13 +235,6 @@ Executes the linux-utils role.
 
 
 Left Empty on purpose, not used in cookbook.
-
-
-### linux::hostsfile.rb
-
-
-Add all hosts from the all hosts in a stack to the hosts file.
-Will not add the current node to the hosts file.
 
 
 ### linux::install.rb

@@ -4,6 +4,8 @@
 # Copyright IBM Corp. 2016, 2017
 #
 
+#<> Set the flag to determine whether to skip attributes with INDEX. Set to false to test in a development environment
+default['linux']['skip_indexes'] = true
 
-#<> Default hosts file for Linux
-force_default['linux']['hostsfile'] = '/etc/hosts'
+#<> Pre-Reqs for LVM
+force_default['linux']['prereqs']['lvm'] = ['lvm2']

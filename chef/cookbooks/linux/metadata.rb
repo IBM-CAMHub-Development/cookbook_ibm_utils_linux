@@ -53,13 +53,166 @@ The following is a sample for adding a cusomter repository.
 
 ```
 EOH
-version '0.1.17'
+version '0.1.23'
 supports 'redhat'
 
-attribute 'linux/configure/yum_repositories',
-          :default => 'false',
-          :description => 'Boolen Flag to configure YUM Repositories',
-          :displayname => 'Configure YUM Repositories',
+attribute 'linux/filesystems/filesystem($INDEX)/device',
+          :default => '/dev/xvdc',
+          :description => 'Device to mount to, leave blank if unknown, the system will search for it.',
+          :displayname => 'device',
+          :parm_type => 'node',
+          :precedence_level => 'node',
+          :required => 'recommended',
+          :selectable => 'false',
+          :type => 'string'
+attribute 'linux/filesystems/filesystem($INDEX)/force',
+          :default => 'true',
+          :description => 'Force the mount true or false',
+          :displayname => 'force',
+          :parm_type => 'node',
+          :precedence_level => 'node',
+          :required => 'recommended',
+          :selectable => 'false',
+          :type => 'string'
+attribute 'linux/filesystems/filesystem($INDEX)/fstype',
+          :default => 'ext4',
+          :description => 'File System Type',
+          :displayname => 'fstype',
+          :parm_type => 'node',
+          :precedence_level => 'node',
+          :required => 'recommended',
+          :selectable => 'false',
+          :type => 'string'
+attribute 'linux/filesystems/filesystem($INDEX)/group',
+          :default => 'root',
+          :description => 'Group owner of the mount point',
+          :displayname => 'group',
+          :parm_type => 'node',
+          :precedence_level => 'node',
+          :required => 'recommended',
+          :selectable => 'false',
+          :type => 'string'
+attribute 'linux/filesystems/filesystem($INDEX)/label',
+          :default => 'filesystem1',
+          :description => 'Label of the file system',
+          :displayname => 'label',
+          :parm_type => 'node',
+          :precedence_level => 'node',
+          :required => 'recommended',
+          :selectable => 'false',
+          :type => 'string'
+attribute 'linux/filesystems/filesystem($INDEX)/mountpoint',
+          :default => '/var/filesystem1',
+          :description => 'Directory to mount to, directory will be created',
+          :displayname => 'mountpoint',
+          :parm_type => 'node',
+          :precedence_level => 'node',
+          :required => 'recommended',
+          :selectable => 'false',
+          :type => 'string'
+attribute 'linux/filesystems/filesystem($INDEX)/options',
+          :default => 'defaults',
+          :description => 'Advanced options for mounting the disk',
+          :displayname => 'options',
+          :parm_type => 'node',
+          :precedence_level => 'node',
+          :required => 'recommended',
+          :selectable => 'false',
+          :type => 'string'
+attribute 'linux/filesystems/filesystem($INDEX)/perms',
+          :default => '755',
+          :description => 'Permissions for the mount point.',
+          :displayname => 'perms',
+          :parm_type => 'node',
+          :precedence_level => 'node',
+          :required => 'recommended',
+          :selectable => 'false',
+          :type => 'string'
+attribute 'linux/filesystems/filesystem($INDEX)/size',
+          :default => 'true',
+          :description => 'Size in GB of the disk',
+          :displayname => 'size',
+          :parm_type => 'node',
+          :precedence_level => 'node',
+          :required => 'recommended',
+          :selectable => 'false',
+          :type => 'string'
+attribute 'linux/filesystems/filesystem($INDEX)/user',
+          :default => 'root',
+          :description => 'Owner of the mount point.',
+          :displayname => 'user',
+          :parm_type => 'node',
+          :precedence_level => 'node',
+          :required => 'recommended',
+          :selectable => 'false',
+          :type => 'string'
+attribute 'linux/physicalvolumes/physicalvolume($INDEX)/device',
+          :default => '',
+          :description => 'Name of the physical device, eg, /dev/xdba. Leave assign a free device based on size',
+          :displayname => 'device',
+          :parm_type => 'node',
+          :precedence_level => 'node',
+          :required => 'recommended',
+          :selectable => 'false',
+          :type => 'string'
+attribute 'linux/physicalvolumes/physicalvolume($INDEX)/logicalvolumes/logicalvolume($INDEX)/filesystem',
+          :default => 'ext4',
+          :description => 'The stsandard filesystem type.',
+          :displayname => 'filesystem',
+          :parm_type => 'node',
+          :precedence_level => 'node',
+          :required => 'recommended',
+          :selectable => 'false',
+          :type => 'string'
+attribute 'linux/physicalvolumes/physicalvolume($INDEX)/logicalvolumes/logicalvolume($INDEX)/lv_name',
+          :default => 'lv_name',
+          :description => 'Name of the logical volume.',
+          :displayname => 'lv_name',
+          :parm_type => 'node',
+          :precedence_level => 'node',
+          :required => 'recommended',
+          :selectable => 'false',
+          :type => 'string'
+attribute 'linux/physicalvolumes/physicalvolume($INDEX)/logicalvolumes/logicalvolume($INDEX)/lv_size',
+          :default => '10g',
+          :description => 'Size of the filesystem, use standard lvm file size format',
+          :displayname => 'lv_size',
+          :parm_type => 'node',
+          :precedence_level => 'node',
+          :required => 'recommended',
+          :selectable => 'false',
+          :type => 'string'
+attribute 'linux/physicalvolumes/physicalvolume($INDEX)/logicalvolumes/logicalvolume($INDEX)/mountpoint',
+          :default => '/var/filesystem1',
+          :description => 'Mount Point of the file system attached to the Logical Volume',
+          :displayname => 'lv_size',
+          :parm_type => 'node',
+          :precedence_level => 'node',
+          :required => 'recommended',
+          :selectable => 'false',
+          :type => 'string'
+attribute 'linux/physicalvolumes/physicalvolume($INDEX)/logicalvolumes/logicalvolume($INDEX)/options',
+          :default => 'rw',
+          :description => 'Name of the logical volume.',
+          :displayname => 'options',
+          :parm_type => 'node',
+          :precedence_level => 'node',
+          :required => 'recommended',
+          :selectable => 'false',
+          :type => 'string'
+attribute 'linux/physicalvolumes/physicalvolume($INDEX)/size',
+          :default => '10',
+          :description => 'Size if GB of the device.',
+          :displayname => 'size',
+          :parm_type => 'node',
+          :precedence_level => 'node',
+          :required => 'recommended',
+          :selectable => 'false',
+          :type => 'string'
+attribute 'linux/physicalvolumes/physicalvolume($INDEX)/vg_name',
+          :default => 'vgname',
+          :description => 'Name of the Volume Group to be assigned to the Physical Volume.',
+          :displayname => 'vg_name',
           :parm_type => 'node',
           :precedence_level => 'node',
           :required => 'recommended',
@@ -131,21 +284,20 @@ attribute 'linux/yum_repositories/repo01/sslverify',
           :required => 'recommended',
           :selectable => 'false',
           :type => 'boolean'
-recipe 'linux::aws_setup.rb', '
-AWS Setup Cookbook, enable the extra repositories needed to install IBM Products.
-'
 recipe 'linux::cleanup.rb', '
 Left Empty on purpose, not used in cookbook.
+'
+recipe 'linux::create_fs.rb', '
+Create 1..n disks and mount based on the ibm_cloud_fs resource
+'
+recipe 'linux::create_lvm.rb', '
+Create a series of physical volumes, volume groups and logical volumes
 '
 recipe 'linux::default.rb', '
 Executes the linux-utils role.
 '
 recipe 'linux::gather_evidence.rb', '
 Left Empty on purpose, not used in cookbook.
-'
-recipe 'linux::hostsfile.rb', '
-Add all hosts from the all hosts in a stack to the hosts file.
-Will not add the current node to the hosts file.
 '
 recipe 'linux::install.rb', '
 Left Empty on purpose, not used in cookbook.

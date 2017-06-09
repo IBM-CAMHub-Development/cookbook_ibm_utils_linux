@@ -1,15 +1,195 @@
 {
     "linux": {
-        "configure": {
-            "yum_repositories": {
-                "default": "false",
-                "description": "Boolen Flag to configure YUM Repositories",
-                "displayname": "Configure YUM Repositories",
-                "parm_type": "node",
-                "precedence_level": "node",
-                "required": "recommended",
-                "selectable": "false",
-                "type": "string"
+        "filesystems": {
+            "filesystem($INDEX)": {
+                "device": {
+                    "default": "/dev/xvdc",
+                    "description": "Device to mount to, leave blank if unknown, the system will search for it.",
+                    "displayname": "device",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "force": {
+                    "default": "true",
+                    "description": "Force the mount true or false",
+                    "displayname": "force",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "fstype": {
+                    "default": "ext4",
+                    "description": "File System Type",
+                    "displayname": "fstype",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "group": {
+                    "default": "root",
+                    "description": "Group owner of the mount point",
+                    "displayname": "group",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "label": {
+                    "default": "filesystem1",
+                    "description": "Label of the file system",
+                    "displayname": "label",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "mountpoint": {
+                    "default": "/var/filesystem1",
+                    "description": "Directory to mount to, directory will be created",
+                    "displayname": "mountpoint",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "options": {
+                    "default": "defaults",
+                    "description": "Advanced options for mounting the disk",
+                    "displayname": "options",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "perms": {
+                    "default": "755",
+                    "description": "Permissions for the mount point.",
+                    "displayname": "perms",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "size": {
+                    "default": "true",
+                    "description": "Size in GB of the disk",
+                    "displayname": "size",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "user": {
+                    "default": "root",
+                    "description": "Owner of the mount point.",
+                    "displayname": "user",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "selectable": "false",
+                    "type": "string"
+                }
+            }
+        },
+        "physicalvolumes": {
+            "physicalvolume($INDEX)": {
+                "device": {
+                    "default": "",
+                    "description": "Name of the physical device, eg, /dev/xdba. Leave assign a free device based on size",
+                    "displayname": "device",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "logicalvolumes": {
+                    "logicalvolume($INDEX)": {
+                        "filesystem": {
+                            "default": "ext4",
+                            "description": "The stsandard filesystem type.",
+                            "displayname": "filesystem",
+                            "parm_type": "node",
+                            "precedence_level": "node",
+                            "required": "recommended",
+                            "selectable": "false",
+                            "type": "string"
+                        },
+                        "lv_name": {
+                            "default": "lv_name",
+                            "description": "Name of the logical volume.",
+                            "displayname": "lv_name",
+                            "parm_type": "node",
+                            "precedence_level": "node",
+                            "required": "recommended",
+                            "selectable": "false",
+                            "type": "string"
+                        },
+                        "lv_size": {
+                            "default": "10g",
+                            "description": "Size of the filesystem, use standard lvm file size format",
+                            "displayname": "lv_size",
+                            "parm_type": "node",
+                            "precedence_level": "node",
+                            "required": "recommended",
+                            "selectable": "false",
+                            "type": "string"
+                        },
+                        "mountpoint": {
+                            "default": "/var/filesystem1",
+                            "description": "Mount Point of the file system attached to the Logical Volume",
+                            "displayname": "lv_size",
+                            "parm_type": "node",
+                            "precedence_level": "node",
+                            "required": "recommended",
+                            "selectable": "false",
+                            "type": "string"
+                        },
+                        "options": {
+                            "default": "rw",
+                            "description": "Name of the logical volume.",
+                            "displayname": "options",
+                            "parm_type": "node",
+                            "precedence_level": "node",
+                            "required": "recommended",
+                            "selectable": "false",
+                            "type": "string"
+                        }
+                    }
+                },
+                "size": {
+                    "default": "10",
+                    "description": "Size if GB of the device.",
+                    "displayname": "size",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "selectable": "false",
+                    "type": "string"
+                },
+                "vg_name": {
+                    "default": "vgname",
+                    "description": "Name of the Volume Group to be assigned to the Physical Volume.",
+                    "displayname": "vg_name",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "recommended",
+                    "selectable": "false",
+                    "type": "string"
+                }
             }
         },
         "yum_repositories": {
