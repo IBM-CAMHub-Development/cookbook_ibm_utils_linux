@@ -61,7 +61,7 @@ Requirements
 
 ### Cookbooks:
 
-*No dependencies defined*
+* ibm_cloud_utils
 
 Attributes
 ----------

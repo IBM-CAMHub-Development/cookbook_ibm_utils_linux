@@ -25,9 +25,9 @@ node['linux']['filesystems'].each do |fs_name, fs_details|
     if device.to_s.empty?
         Chef::Application.fatal!("FATAL:No device found for size #{size}", 1)
     else
-        ruby_block "Save_Device_Details_#{_fs_name}" do
+        ruby_block "Save_Device_Details_#{fs_name}" do
             block do
-                node.set['linux']['filesystems'][_fs_name]['device'] = device
+                node.set['linux']['filesystems'][fs_name]['device'] = device
                 node.save
             end
         end

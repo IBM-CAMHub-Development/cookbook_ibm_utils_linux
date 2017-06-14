@@ -2,6 +2,7 @@ name             'linux'
 maintainer       'IBM Corp'
 maintainer_email ''
 license 'Copyright IBM Corp. 2012, 2017'
+depends 'ibm_cloud_utils'
 description <<-EOH
 
 # Description
@@ -53,7 +54,7 @@ The following is a sample for adding a cusomter repository.
 
 ```
 EOH
-version '0.1.23'
+version '0.1.24'
 supports 'redhat'
 
 attribute 'linux/filesystems/filesystem($INDEX)/device',
