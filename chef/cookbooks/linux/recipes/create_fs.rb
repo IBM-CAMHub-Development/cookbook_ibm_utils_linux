@@ -48,7 +48,7 @@ node['linux']['filesystems'].each do |fs_name, fs_details|
 
     Chef::Log.info("Mounting #{mount_dir} on #{device}")
     ibm_cloud_utils_ibm_cloud_fs fs_details['label'] do
-      action :create
+      action :enable
       device device
       mountpoint fs_details['mountpoint']
       label fs_details['label']

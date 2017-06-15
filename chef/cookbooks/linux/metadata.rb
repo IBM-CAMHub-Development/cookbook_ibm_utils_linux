@@ -54,7 +54,7 @@ The following is a sample for adding a cusomter repository.
 
 ```
 EOH
-version '0.1.24'
+version '0.1.25'
 supports 'redhat'
 
 attribute 'linux/filesystems/filesystem($INDEX)/device',
