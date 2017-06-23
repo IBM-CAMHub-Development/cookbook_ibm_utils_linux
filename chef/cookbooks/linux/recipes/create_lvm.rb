@@ -6,19 +6,15 @@
 #
 # <> Create a series of physical volumes, volume groups and logical volumes
 
+::Chef::Recipe.send(:include, LNXHelper)
+
 ###############################################################################
 # Install LVM Libraries
 ###############################################################################
 
-prereqs =  node['linux']['prereqs']['lvm']
-Chef::Log.info("Installing pre-requisite packages. #{prereqs}")
-case node['platform_family']
-when 'rhel', 'centos', 'fedora'
-  prereqs.each do |p|
-    package p do
-      package_name p
-      action :upgrade
-    end
+node['linux']['prereqs']['lvm'].each do |p|
+  package p do
+    action :upgrade
   end
 end
 
@@ -30,41 +26,48 @@ node['linux']['physicalvolumes'].each do |pv_name, pv_details|
   next if pv_name.match('INDEX') && node['linux']['skip_indexes']
   size = pv_details['size']
 
-  Chef::Log.info("Checking for #{pv_name} with a device name of
-                                 #{pv_details['device']} and a size of #{size}")
+  device = pv_details['device']
+  raise "Incorrect entry for device #{pv_name}: #{pv_details['device']}" unless /^\/dev\//.match(device).length == 1 && device.split('/').length == 3
+  devsize = pv_details['size'].to_i * 2 * 1024**2 # size in number of 512B sectors
 
-  device = if pv_details['device'].to_s.empty?
-             get_disk_device(pv_details['size'])
-           else
-             pv_details['device']
-           end
+  # At first run we might get another device than expected
+  if device.nil? || device.empty? || # no device specified
+     # or specified device not present
+     node['block_device'][device.split('/').last].nil? ||
+     # or device exists but is of different size
+     node['block_device'][device.split('/').last]['size'].to_i != devsize
+    device = ''
+    node['block_device'].each_pair do |disk, params|
+      # match on device of expected size
+      next unless params['size'].to_i == devsize
+      # unless it already has a filesystem
+      next unless raw_volume?(disk)
+      device = '/dev/' + disk
+      break
+    end
 
-  if device.to_s.empty?
-    Chef::Application.fatal!("FATAL:No device found for size #{size}", 1)
-  else
-    ruby_block "Save_Device_Details_#{_pv_name}" do
-      block do
-        node.set['linux']['physicalvolumes'][_pv_name]['device'] = device
-        node.save
+    # ... so update attributes with the found device, or fail if none
+    if device.to_s.empty?
+      Chef::Application.fatal!("No device available for filesystem #{pv_name}, size #{size}", 1)
+    else
+      ruby_block "Save_Device_Details_#{pv_name}" do
+        block do
+          node.normal['linux']['physicalvolumes'][pv_name]['device'] = device
+          node.save
+        end
       end
     end
   end
 
-  vg_name = pv_details['vg_name']
-  # The Physical Volume resource adds /dev so we must strip it out
-
-  device_name = device.gsub('/dev/', '')
-
-  Chef::Log.info("Creating Physical Device on #{device} with a size #{size}")
-  ibm_cloud_utils_lvm_physical_volume device  do
-    disk device_name
+  # Create volume group
+  ibm_cloud_utils_lvm_physical_volume "Creating Physical Device on #{device} with a size #{size}" do
+    disk device.gsub('/dev/', '')
     action :create
   end
 
-  Chef::Log.info("Creating Volume Group #{vg_name} on #{device}")
-  ibm_cloud_utils_lvm_volume_group vg_name do
+  ibm_cloud_utils_lvm_volume_group "Creating Volume Group #{pv_details['vg_name']} on #{device}" do
     pv_name device
-    vg_name vg_name
+    vg_name pv_details['vg_name']
     action :create
   end
 
@@ -72,9 +75,8 @@ node['linux']['physicalvolumes'].each do |pv_name, pv_details|
     next if lv_name.match('INDEX') && node['linux']['skip_indexes']
 
     lv_name = lv_details['lv_name']
-    Chef::Log.info("Creating Logical Volume #{lv_name} on #{vg_name}")
-    ibm_cloud_utils_lvm_logical_volume 'Creating logical volume' do
-      vg_name vg_name
+    ibm_cloud_utils_lvm_logical_volume "Creating logical volume #{lv_name} on #{pv_details['vg_name']}" do
+      vg_name pv_details['vg_name']
       mountpoint lv_details['mountpoint']
       lv_name lv_details['lv_name']
       filesystem lv_details['filesystem']

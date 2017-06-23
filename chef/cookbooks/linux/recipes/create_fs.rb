@@ -6,6 +6,8 @@
 #
 # <> Create 1..n disks and mount based on the ibm_cloud_fs resource
 
+::Chef::Recipe.send(:include, LNXHelper)
+
 ###############################################################################
 # CREATE FILE SYSTEMS
 ###############################################################################
@@ -16,13 +18,20 @@ node['linux']['filesystems'].each do |fs_name, fs_details|
 
   device = fs_details['device']
   raise "Incorrect entry for device #{fs_name}: #{fs_details['device']}" unless /^\/dev\//.match(device).length == 1 && device.split('/').length == 3
+  devsize = fs_details['size'].to_i * 2 * 1024**2 # size in number of 512B sectors
 
   # At first run we might get another device than expected
-  if device.nil? || device.empty? || node['block_device'][device.split('/').last].nil?
+  if device.nil? || device.empty? || # no device specified
+     # or specified device not present
+     node['block_device'][device.split('/').last].nil? ||
+     # or device exists but of different size
+     node['block_device'][device.split('/').last]['size'].to_i != devsize
     device = ''
     node['block_device'].each_pair do |disk, params|
-      next unless params['size'].to_i == fs_details['size'].to_i * (1024 / params['logical_block_size'].to_i) * 1024**2
-      next unless node['filesystem']['/dev/' + disk].nil?
+      # match on device of expected size
+      next unless params['size'].to_i == devsize
+      # unless it already has a filesystem
+      next unless raw_volume?(disk)
       device = '/dev/' + disk
       break
     end
