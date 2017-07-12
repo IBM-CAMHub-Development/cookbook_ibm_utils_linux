@@ -49,20 +49,16 @@ node['linux']['filesystems'].each do |fs_name, fs_details|
     end
   end
 
-  mount_dir = fs_details['mountpoint']
-  Chef::Log.info("Creating mount directory #{mount_dir}")
-  case node['platform_family']
-  when 'rhel', 'centos', 'fedora'
-    directory mount_dir do
-      owner fs_details['user']
-      group fs_details['group']
-      mode fs_details['perms']
-      action :create
-      recursive true
-    end
+  # create mountpoint
+  directory fs_details['mountpoint'] do
+    owner fs_details['user']
+    group fs_details['group']
+    mode fs_details['perms']
+    action :create
+    recursive true
   end
 
-  Chef::Log.info("Mounting #{mount_dir} on #{device}")
+  # ...and mount
   ibm_cloud_utils_ibm_cloud_fs fs_details['label'] do
     action :enable
     device device
