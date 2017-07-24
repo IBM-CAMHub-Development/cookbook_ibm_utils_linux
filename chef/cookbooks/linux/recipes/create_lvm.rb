@@ -27,7 +27,7 @@ node['linux']['physicalvolumes'].each do |pv_name, pv_details|
   size = pv_details['size']
 
   device = pv_details['device']
-  raise "Incorrect entry for device #{pv_name}: #{pv_details['device']}" unless /^\/dev\//.match(device).length == 1 && device.split('/').length == 3
+  # raise "Incorrect entry for device #{pv_name}: #{pv_details['device']}" unless /^\/dev\//.match(device).length == 1 && device.split('/').length == 3
   devsize = pv_details['size'].to_i * 2 * 1024**2 # size in number of 512B sectors
 
   # At first run we might get another device than expected

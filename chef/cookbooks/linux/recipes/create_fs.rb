@@ -12,12 +12,14 @@
 # CREATE FILE SYSTEMS
 ###############################################################################
 
+taken = [] # workaround for compile time evaluation of raw_volume?
+
 node['linux']['filesystems'].each do |fs_name, fs_details|
   next if fs_name.match('INDEX') && node['linux']['skip_indexes']
   size = fs_details['size']
 
   device = fs_details['device']
-  raise "Incorrect entry for device #{fs_name}: #{fs_details['device']}" unless /^\/dev\//.match(device).length == 1 && device.split('/').length == 3
+  # raise "Incorrect entry for device #{fs_name}: #{fs_details['device']}" unless /^\/dev\//.match(device).length == 1 && device.split('/').length == 3
   devsize = fs_details['size'].to_i * 2 * 1024**2 # size in number of 512B sectors
 
   # At first run we might get another device than expected
@@ -32,13 +34,16 @@ node['linux']['filesystems'].each do |fs_name, fs_details|
       next unless params['size'].to_i == devsize
       # unless it already has a filesystem
       next unless raw_volume?(disk)
+      next if taken.include?(disk)
       device = '/dev/' + disk
+      taken.push(disk)
+      log "Disks found: #{taken.inspect}"
       break
     end
 
     # ... so update attributes with the found device, or fail if none
     if device.to_s.empty?
-      Chef::Application.fatal!("No device available for filesystem #{fs_name}, size #{size}", 1)
+      log "No device available for filesystem #{fs_name}, size #{size}"
     else
       ruby_block "Save_Device_Details_#{fs_name}" do
         block do
