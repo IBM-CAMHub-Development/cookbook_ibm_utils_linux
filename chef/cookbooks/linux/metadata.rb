@@ -3,7 +3,7 @@ maintainer       'IBM Corp'
 maintainer_email ''
 license 'Copyright IBM Corp. 2012, 2017'
 depends 'ibm_cloud_utils'
-version '0.1.32'
+version '0.1.34'
 supports 'redhat'
 description <<-EOH
 
@@ -186,7 +186,7 @@ attribute 'linux/physicalvolumes/physicalvolume($INDEX)/logicalvolumes/logicalvo
 attribute 'linux/physicalvolumes/physicalvolume($INDEX)/logicalvolumes/logicalvolume($INDEX)/mountpoint',
           :default => '/var/filesystem1',
           :description => 'Mount Point of the file system attached to the Logical Volume',
-          :displayname => 'lv_size',
+          :displayname => 'mountpoint',
           :parm_type => 'node',
           :precedence_level => 'node',
           :required => 'recommended',

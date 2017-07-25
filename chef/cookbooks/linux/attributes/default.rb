@@ -292,7 +292,7 @@ default['linux']['filesystems'] = {
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/physicalvolumes/physicalvolume($INDEX)/logicalvolumes/logicalvolume($INDEX)/mountpoint',
-# <md>          :displayname =>  'lv_size',
+# <md>          :displayname =>  'mountpoint',
 # <md>          :description => 'Mount Point of the file system attached to the Logical Volume',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',

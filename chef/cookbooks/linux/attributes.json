@@ -151,7 +151,7 @@
                         "mountpoint": {
                             "default": "/var/filesystem1",
                             "description": "Mount Point of the file system attached to the Logical Volume",
-                            "displayname": "lv_size",
+                            "displayname": "mountpoint",
                             "parm_type": "node",
                             "precedence_level": "node",
                             "required": "recommended",
