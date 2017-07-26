@@ -3,7 +3,7 @@ maintainer       'IBM Corp'
 maintainer_email ''
 license 'Copyright IBM Corp. 2012, 2017'
 depends 'ibm_cloud_utils'
-version '0.1.34'
+version '0.1.35'
 supports 'redhat'
 description <<-EOH
 
@@ -85,7 +85,7 @@ attribute 'linux/filesystems/filesystem($INDEX)/fstype',
           :selectable => 'false',
           :type => 'string'
 attribute 'linux/filesystems/filesystem($INDEX)/group',
-          :default => 'root',
+          :default => 'default',
           :description => 'Group owner of the mount point',
           :displayname => 'group',
           :parm_type => 'node',
@@ -121,7 +121,7 @@ attribute 'linux/filesystems/filesystem($INDEX)/options',
           :selectable => 'false',
           :type => 'string'
 attribute 'linux/filesystems/filesystem($INDEX)/perms',
-          :default => '755',
+          :default => 'default',
           :description => 'Permissions for the mount point.',
           :displayname => 'perms',
           :parm_type => 'node',
@@ -139,7 +139,7 @@ attribute 'linux/filesystems/filesystem($INDEX)/size',
           :selectable => 'false',
           :type => 'string'
 attribute 'linux/filesystems/filesystem($INDEX)/user',
-          :default => 'root',
+          :default => 'default',
           :description => 'Owner of the mount point.',
           :displayname => 'user',
           :parm_type => 'node',

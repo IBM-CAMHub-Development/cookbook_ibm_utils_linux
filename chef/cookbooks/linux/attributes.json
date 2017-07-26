@@ -33,7 +33,7 @@
                     "type": "string"
                 },
                 "group": {
-                    "default": "root",
+                    "default": "default",
                     "description": "Group owner of the mount point",
                     "displayname": "group",
                     "parm_type": "node",
@@ -73,7 +73,7 @@
                     "type": "string"
                 },
                 "perms": {
-                    "default": "755",
+                    "default": "default",
                     "description": "Permissions for the mount point.",
                     "displayname": "perms",
                     "parm_type": "node",
@@ -93,7 +93,7 @@
                     "type": "string"
                 },
                 "user": {
-                    "default": "root",
+                    "default": "default",
                     "description": "Owner of the mount point.",
                     "displayname": "user",
                     "parm_type": "node",

@@ -84,9 +84,9 @@ end
 fs_to_process.each_pair do |_fs_name, fs_details|
   # create mountpoint
   directory fs_details['mountpoint'] do
-    owner fs_details['user']
-    group fs_details['group']
-    mode fs_details['perms']
+    owner fs_details['user'] unless fs_details['user'].casecmp('default') == 0
+    group fs_details['group'] unless fs_details['group'].casecmp('default') == 0
+    mode fs_details['perms'] unless fs_details['perms'].casecmp('default') == 0
     action :create
     recursive true
   end

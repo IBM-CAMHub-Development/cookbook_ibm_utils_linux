@@ -90,7 +90,7 @@ Attributes
   <tr>
     <td><code>node['linux']['filesystems']['filesystem($INDEX)']['group']</code></td>
     <td>Group owner of the mount point</td>
-    <td><code>root</code></td>
+    <td><code>default</code></td>
   </tr>
   <tr>
     <td><code>node['linux']['filesystems']['filesystem($INDEX)']['label']</code></td>
@@ -110,7 +110,7 @@ Attributes
   <tr>
     <td><code>node['linux']['filesystems']['filesystem($INDEX)']['perms']</code></td>
     <td>Permissions for the mount point.</td>
-    <td><code>755</code></td>
+    <td><code>default</code></td>
   </tr>
   <tr>
     <td><code>node['linux']['filesystems']['filesystem($INDEX)']['size']</code></td>
@@ -120,7 +120,7 @@ Attributes
   <tr>
     <td><code>node['linux']['filesystems']['filesystem($INDEX)']['user']</code></td>
     <td>Owner of the mount point.</td>
-    <td><code>root</code></td>
+    <td><code>default</code></td>
   </tr>
   <tr>
     <td><code>node['linux']['physicalvolumes']['physicalvolume($INDEX)']['device']</code></td>
