@@ -11,9 +11,9 @@
           "fstype": "ext4",
           "label": "filesystem1",
           "mountpoint": "/var/filesystem1",
-          "user": "root",
-          "group": "root",
-          "perms": "755",
+          "user": "default",
+          "group": "default",
+          "perms": "default",
           "options": "defaults",
           "size": "40",
           "force": "true"
