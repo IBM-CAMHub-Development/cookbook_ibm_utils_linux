@@ -24,6 +24,9 @@
         "displayname": "linux_add_yum_repo",
         "name": "linux_add_yum_repo",
         "objectname": "linux_add_yum_repo",
+        "run_list": [
+            "recipe[linux::yumrepo]"
+        ],
         "type": "chef_role"
     },
     {
@@ -60,6 +63,9 @@
         "displayname": "linux_cloud_fs",
         "name": "linux_cloud_fs",
         "objectname": "linux_cloud_fs",
+        "run_list": [
+            "recipe[linux::create_fs]"
+        ],
         "type": "chef_role"
     },
     {
@@ -108,6 +114,9 @@
         "displayname": "linux_cloud_lvm",
         "name": "linux_cloud_lvm",
         "objectname": "linux_cloud_lvm",
+        "run_list": [
+            "recipe[linux::create_lvm]"
+        ],
         "type": "chef_role"
     }
 ]
