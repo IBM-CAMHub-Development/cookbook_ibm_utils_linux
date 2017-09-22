@@ -54,7 +54,7 @@ default['linux']['vault']['encrypted_id'] = node['ibm_internal']['vault']['item'
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'Yum Repository 1',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/yum_repositories/repo01/repositoryid',
@@ -63,7 +63,7 @@ default['linux']['vault']['encrypted_id'] = node['ibm_internal']['vault']['item'
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'CAM Repository',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/yum_repositories/repo01/baseurl',
@@ -72,7 +72,7 @@ default['linux']['vault']['encrypted_id'] = node['ibm_internal']['vault']['item'
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'https://xx',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/yum_repositories/repo01/enabled',
@@ -81,7 +81,7 @@ default['linux']['vault']['encrypted_id'] = node['ibm_internal']['vault']['item'
 # <md>          :type => 'boolean',
 # <md>          :required => 'recommended',
 # <md>          :default => 'true',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/yum_repositories/repo01/gpgkey',
@@ -90,7 +90,7 @@ default['linux']['vault']['encrypted_id'] = node['ibm_internal']['vault']['item'
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/yum_repositories/repo01/gpgcheck',
@@ -99,7 +99,7 @@ default['linux']['vault']['encrypted_id'] = node['ibm_internal']['vault']['item'
 # <md>          :type => 'boolean',
 # <md>          :required => 'recommended',
 # <md>          :default => 'true',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/yum_repositories/repo01/sslverify',
@@ -108,7 +108,7 @@ default['linux']['vault']['encrypted_id'] = node['ibm_internal']['vault']['item'
 # <md>          :type => 'boolean',
 # <md>          :required => 'recommended',
 # <md>          :default => 'true',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/yum_repositories/repo01/sslcacert',
@@ -117,7 +117,7 @@ default['linux']['vault']['encrypted_id'] = node['ibm_internal']['vault']['item'
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'true',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 
@@ -145,7 +145,7 @@ default['linux']['yum_repositories'] = {
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '/dev/xvdc',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/filesystems/filesystem($INDEX)/fstype',
@@ -154,7 +154,7 @@ default['linux']['yum_repositories'] = {
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'ext4',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/filesystems/filesystem($INDEX)/label',
@@ -163,7 +163,7 @@ default['linux']['yum_repositories'] = {
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'filesystem1',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/filesystems/filesystem($INDEX)/mountpoint',
@@ -172,7 +172,7 @@ default['linux']['yum_repositories'] = {
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '/var/filesystem1',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/filesystems/filesystem($INDEX)/user',
@@ -181,7 +181,7 @@ default['linux']['yum_repositories'] = {
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'default',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/filesystems/filesystem($INDEX)/group',
@@ -190,7 +190,7 @@ default['linux']['yum_repositories'] = {
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'default',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/filesystems/filesystem($INDEX)/perms',
@@ -199,7 +199,7 @@ default['linux']['yum_repositories'] = {
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'default',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/filesystems/filesystem($INDEX)/options',
@@ -208,7 +208,7 @@ default['linux']['yum_repositories'] = {
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'defaults',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/filesystems/filesystem($INDEX)/force',
@@ -217,7 +217,7 @@ default['linux']['yum_repositories'] = {
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'true',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/filesystems/filesystem($INDEX)/size',
@@ -226,7 +226,7 @@ default['linux']['yum_repositories'] = {
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'true',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 
@@ -261,7 +261,7 @@ default['linux']['filesystems'] = {
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'lv_name',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/physicalvolumes/physicalvolume($INDEX)/logicalvolumes/logicalvolume($INDEX)/filesystem',
@@ -270,7 +270,7 @@ default['linux']['filesystems'] = {
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'ext4',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/physicalvolumes/physicalvolume($INDEX)/logicalvolumes/logicalvolume($INDEX)/lv_size',
@@ -279,7 +279,7 @@ default['linux']['filesystems'] = {
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '10g',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/physicalvolumes/physicalvolume($INDEX)/logicalvolumes/logicalvolume($INDEX)/options',
@@ -288,7 +288,7 @@ default['linux']['filesystems'] = {
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'rw',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/physicalvolumes/physicalvolume($INDEX)/logicalvolumes/logicalvolume($INDEX)/mountpoint',
@@ -297,7 +297,7 @@ default['linux']['filesystems'] = {
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '/var/filesystem1',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/physicalvolumes/physicalvolume($INDEX)/device',
@@ -306,7 +306,7 @@ default['linux']['filesystems'] = {
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/physicalvolumes/physicalvolume($INDEX)/vg_name',
@@ -315,7 +315,7 @@ default['linux']['filesystems'] = {
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'vgname',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 # <md>attribute 'linux/physicalvolumes/physicalvolume($INDEX)/size',
@@ -324,7 +324,7 @@ default['linux']['filesystems'] = {
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '10',
-# <md>          :selectable => 'false',
+# <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node'
 
