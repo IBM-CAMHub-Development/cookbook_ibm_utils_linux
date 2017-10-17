@@ -3,7 +3,7 @@ maintainer       'IBM Corp'
 maintainer_email ''
 license 'Copyright IBM Corp. 2012, 2017'
 depends 'ibm_cloud_utils'
-version '0.1.42'
+version '1.0.0'
 supports 'redhat'
 description <<-EOH
 
