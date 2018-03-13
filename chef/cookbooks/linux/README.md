@@ -267,7 +267,7 @@ License and Author
 
 Author:: IBM Corp (<>)
 
-Copyright:: 2017, IBM Corp
+Copyright:: 2018, IBM Corp
 
-License:: Copyright IBM Corp. 2012, 2017
+License:: Copyright IBM Corp. 2012, 2018
 
