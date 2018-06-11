@@ -2,7 +2,7 @@
 # Cookbook Name::linux
 # Recipe:: create_fs
 #
-# Copyright IBM Corp. 2016, 2017
+# Copyright IBM Corp. 2016, 2018
 #
 # <> Create 1..n disks and mount based on the ibm_cloud_fs resource
 
@@ -61,14 +61,11 @@ node['linux']['filesystems'].each_pair do |fs_name, fs_details|
     Chef::Log.debug("Found: #{fs_name}: #{device} (#{fs_details['size']}): #{fs_details['mountpoint']} (was #{fs_details['device']})")
 
     # ... so update attributes with the found device, or fail if none
-    if device.to_s.empty?
-      raise "No device available for filesystem #{fs_name}, size #{size}"
-    else
-      ruby_block "Save_Device_Details_#{fs_name} - #{device}:#{fs_details['mountpoint']}" do
-        block do
-          node.normal['linux']['filesystems'][fs_name]['device'] = device
-          node.save
-        end
+    raise "No device available for filesystem #{fs_name}, size #{size}" if device.to_s.empty?
+    ruby_block "Save_Device_Details_#{fs_name} - #{device}:#{fs_details['mountpoint']}" do
+      block do
+        node.normal['linux']['filesystems'][fs_name]['device'] = device
+        node.save
       end
     end
   end

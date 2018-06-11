@@ -138,9 +138,7 @@ default['linux']['yum_repositories'] = {
     'gpgkey' => '',
     'gpgcheck' => true,
     'sslverify' => true,
-    'sslcacert' => ''
-  }
-}
+    'sslcacert' => '' } }
 
 # <md>attribute '$dynamicmaps/linux/filesystems',
 # <md>          :$displayname =>  'File Systems',
@@ -259,9 +257,7 @@ default['linux']['filesystems'] = {
     'group' => 'default',
     'perms' => 'default',
     'options' => 'defaults',
-    'force' => 'true'
-  }
-}
+    'force' => 'true' } }
 
 # <md>attribute '$dynamicmaps/linux/physicalvolumes',
 # <md>          :$displayname =>  'Physical Volumes',
@@ -362,11 +358,7 @@ default['linux']['physicalvolumes'] = {
         'lv_name' => 'lv_name',
         'filesystem' => 'ext4',
         'lv_size' => '49G',
-        'options' => 'rw'
-      }
-    },
+        'options' => 'rw' } },
     'device' => '',
     'vg_name' => 'vgname',
-    'size' => '50'
-  }
-}
+    'size' => '50' } }

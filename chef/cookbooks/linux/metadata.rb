@@ -2,8 +2,11 @@ name             'linux'
 maintainer       'IBM Corp'
 maintainer_email ''
 license 'Copyright IBM Corp. 2012, 2018'
+issues_url   'https://github.com/IBM-CAMHub-Open/cookbook_ibm_utils_linux/issues'
+source_url   'https://github.com/IBM-CAMHub-Open/cookbook_ibm_utils_linux'
+chef_version '>= 12.5' if respond_to?(:chef_version)
 depends 'ibm_cloud_utils'
-version '1.0.2'
+version '2.0.0'
 supports 'redhat'
 description <<-EOH
 
